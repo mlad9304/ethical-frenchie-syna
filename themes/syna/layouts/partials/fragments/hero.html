@@ -4,121 +4,61 @@
 {{- end }}
 
 {{ "<!-- hero -->" | safeHTML }}
-<header id="{{ .Name }}">
-  {{- if .Params.header }}
-    {{/* Global resource fallback - can also be used within loops */}}
-    {{- $image := .Params.header -}}
-
-    {{/* Do not change the following snippet */}}
-    {{/* Code is duplicated throughout the code */}}
-    {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-    {{/* Page specific resource */}}
-    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-    {{- if (fileExists (printf "content/%s" $location)) -}}
-      {{/* special case index: trim _index/ from url */}}
-      {{- $.root.Scratch.Set "image" $location -}}
-    {{- end -}}
-
-    {{/* Fragment specific resource */}}
-    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-    {{- if (fileExists (printf "content/%s" $location)) -}}
-      {{/* special case index: trim _index/ from url */}}
-      {{- $.root.Scratch.Set "image" $location -}}
-    {{- end -}}
-    {{/* End of do not change */}}
-    <div style="background-image:url({{ $.root.Scratch.Get "image" | relURL }})"
-      class="jumbotron text-center header-image mb-0
-      {{- printf " bg-%s" $bg -}}
-    ">
-  {{- else }}
-    <div class="jumbotron text-center mb-0
-      {{- printf " bg-%s" $bg -}}
-    ">
-  {{- end }}
-  {{- if .Params.particles }}
-    <div id="particles-js"></div>
-  {{- end -}}
-  {{- if .Params.logo -}}
-    {{/* Global resource fallback - can also be used within loops */}}
-    {{- $image := .Params.logo.image -}}
-
-    {{/* Do not change the following snippet */}}
-    {{/* Code is duplicated throughout the code */}}
-    {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-    {{/* Page specific resource */}}
-    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-    {{- if (fileExists (printf "content/%s" $location)) -}}
-      {{/* special case index: trim _index/ from url */}}
-      {{- $.root.Scratch.Set "image" $location -}}
-    {{- end -}}
-
-    {{/* Fragment specific resource */}}
-    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-    {{- if (fileExists (printf "content/%s" $location)) -}}
-      {{/* special case index: trim _index/ from url */}}
-      {{- $.root.Scratch.Set "image" $location -}}
-    {{- end -}}
-    {{/* End of do not change */}}
-    {{- with .Params.logo }}
-      <div class="row justify-content-center align-items-start">
-        <img class="overlay img-fluid" src="{{ $.root.Scratch.Get "image" | relURL }}"
-          {{- if .height -}} height="{{ .height }}"{{- end -}}
-          {{- if .width -}} width="{{ .width }}"{{- end -}}
-        ></img>
-      </div>
-    {{- end }}
-    {{- with .Params.subtitle }}
-    <div class="row justify-content-center align-items-start">
-      <h1 class="overlay jumbotron-heading my-4
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
-      ">
-        {{- . | markdownify -}}
-      </h1>
-    </div>
-    {{- end -}}
-  {{- else }}
-    {{- with .Params.title }}
-    <div class="row justify-content-center align-items-start">
-      <h1 class="overlay jumbotron-heading
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
-      ">
-        {{- . -}}
-      </h1>
-    </div>
-    {{- end -}}
-    {{- with .Params.subtitle }}
-    <div class="row justify-content-center align-items-start">
-      <div class="overlay lead
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
-      ">
-        {{- . | markdownify -}}
+<main>
+  <section class="hero-slideshow">
+    <div class="swiper-container">
+      <ul class="swiper-wrapper">
+        {{- range .Params.heroes }}
+          {{/* Global resource fallback - can also be used within loops */}}
+          {{- $image := .image -}}
+    
+          {{/* Do not change the following snippet */}}
+          {{/* Code is duplicated throughout the code */}}
+          {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+          {{/* Page specific resource */}}
+          {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+          {{- if (fileExists (printf "content/%s" $location)) -}}
+            {{/* special case index: trim _index/ from url */}}
+            {{- $.root.Scratch.Set "image" $location -}}
+          {{- end -}}
+    
+          {{/* Fragment specific resource */}}
+          {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+          {{- if (fileExists (printf "content/%s" $location)) -}}
+            {{/* special case index: trim _index/ from url */}}
+            {{- $.root.Scratch.Set "image" $location -}}
+          {{- end -}}
+          {{/* End of do not change */}}
+          <li class="swiper-slide">
+            <div style="background-image:url({{ $.root.Scratch.Get "image" | relURL }})"
+              class="background-img">
+              <div class="overlay">
+                <div class="hero-contact">
+                  <h2>{{ .heading }}</h2>
+                  <p>{{ .subtext_top }}</p>
+                  <p>{{ .subtext_bottom }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        {{- end }} 
       </div>
     </div>
-    {{- end -}}
-  {{- end -}}
-  {{- range .Params.buttons }}
-    <a class="overlay btn btn-lg m-2{{ if hasPrefix .url " # " }} anchor{{ end }}
-          {{- $color := .color | default "primary" -}}
-          {{- printf " btn-%s " $color -}}
-        " href="{{ .url | relLangURL }}">
-    <div class="column justify-content-center align-content-center">
-      {{- .text -}}
-    </div>
-    </a>
-
-  {{- end }}
-  </div>
-</header>
+    <nav class="cta-social">
+      {{ with .Site.Params.social }}
+      <a href="https://www.facebook.com/{{.}}" class="social-icon facebook" target="_blank" rel="noopener">
+        {{ $facebok := resources.Get "img/facebook.svg" | minify }}
+        <img src="{{ $facebok.Permalink }}" alt="Connect with us on Facebook">
+      </a>
+      <a href="https://www.instagram.com/{{.}}" class="social-icon instagram" target="_blank" rel="noopener">
+        {{ $instagram := resources.Get "img/instagram.svg" | minify }}
+        <img src="{{ $instagram.Permalink }}" alt="Connect with us on Instagram">
+      </a>
+      {{ end }}
+      <a href="tel:+18002057859" class="social-icon tel" target="_blank" rel="noopener">
+        {{ $phone := resources.Get "img/phone.svg" | minify }}
+        <img src="{{ $phone.Permalink }}" alt="Call us">
+      </a>
+    </nav>
+  </section>
+</main>

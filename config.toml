@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://ethicalfrenchie.com/"
 languageCode = "en-us"
 languageLang = "en"
 title = "Ethical Frenchie"
@@ -6,7 +6,9 @@ themesDir = "themes"
 theme = "syna"
 
 [params]
-
+  OpenLinksInNewWindow = true
+  social = "ethicalfrenchie"
+  description = "Find the best french bulldogs for sale over the phone or in person. Vigorous qualification standards. Applications required. Call now (800) 205-7859."
   [params.style]
     background = "#fefefe"
 
