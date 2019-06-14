@@ -1,7 +1,5 @@
 {{- $bg := .Params.background | default "secondary" -}}
-{{- if .Params.particles }}
-  {{- .page_scratch.Add "js" "hero.js" }}
-{{- end }}
+{{- .page_scratch.Add "js" "hero.js" }}
 
 {{ "<!-- hero -->" | safeHTML }}
 <main>
