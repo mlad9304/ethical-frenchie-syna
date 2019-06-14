@@ -9660,7 +9660,8 @@ div.form-error ul li {
 .pricing-plan {
   display: flex; }
   .pricing-plan .card {
-    flex: 1 0 auto; }
+    flex: 1 0 auto;
+    overflow: hidden; }
   .pricing-plan .card-header {
     height: 125px;
     display: flex;
@@ -9749,4 +9750,55 @@ body.modal-open {
   display: flex !important;
   visibility: hidden;
   opacity: 0; }
+
+nav#static-navbar {
+  justify-content: space-around; }
+
+nav#static-navbar a {
+  justify-content: space-between; }
+
+nav#static-navbar {
+  position: fixed; }
+
+nav#static-navbar a {
+  display: flex; }
+
+nav#static-navbar a {
+  flex-direction: column; }
+
+nav#static-navbar {
+  width: 100%; }
+
+nav#static-navbar, nav#static-navbar a {
+  align-items: center; }
+
+nav#static-navbar a {
+  text-decoration: none; }
+
+nav#static-navbar {
+  background-color: #fefefe;
+  bottom: 0;
+  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.06);
+  left: 0;
+  min-height: 60px;
+  padding: 10px 10px 15px;
+  right: 0;
+  z-index: 50;
+  display: flex; }
+  nav#static-navbar a {
+    margin: 0 10px; }
+    nav#static-navbar a.current {
+      color: #900c3f; }
+      nav#static-navbar a.current svg {
+        fill: #900c3f; }
+    nav#static-navbar a svg {
+      height: 20px;
+      margin-bottom: 3px;
+      width: 20px; }
+    nav#static-navbar a span {
+      font-size: 10px; }
+
+@media screen and (min-width: 992px) {
+  nav#static-navbar {
+    display: none; } }
 

@@ -1,7 +1,14 @@
-baseURL = "https://ethicalfrenchie.com/"
+baseURL = "/"
 languageCode = "en-us"
+languageLang = "en"
 title = "Ethical Frenchie"
+themesDir = "themes"
 theme = "syna"
+
+[params]
+
+  [params.style]
+    background = "#fefefe"
 
 # main/prepend/postpend menus are displayed in nav fragment.
 # Keep an eye out for updates. These will be moved out to make navbar more
@@ -9,24 +16,29 @@ theme = "syna"
 [[menu.main]]
   url = "#"
   name = "Home"
+  image = "nav/home.svg"
   weight = 10
 
 [[menu.main]]
   url = "/about-us"
   name = "About Us"
+  image = "nav/about-us.svg"
   weight = 15
 
 [[menu.main]]
   url = "/puppies"
   name = "Puppies"
+  image = "nav/puppies.svg"
   weight = 20
 
 [[menu.main]]
   url = "/blog"
   name = "Our Blog"
+  image = "nav/blog.svg"
   weight = 30
 
 [[menu.main]]
   url = "/contact-us"
   name = "Contact"
+  image = "nav/contact-us.svg"
   weight = 30
