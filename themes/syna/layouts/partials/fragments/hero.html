@@ -7,28 +7,9 @@
     <div class="swiper-container">
       <ul class="swiper-wrapper">
         {{- range .Params.heroes }}
-          {{/* Global resource fallback - can also be used within loops */}}
-          {{- $image := .image -}}
-    
-          {{/* Do not change the following snippet */}}
-          {{/* Code is duplicated throughout the code */}}
-          {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-          {{/* Page specific resource */}}
-          {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-          {{- if (fileExists (printf "content/%s" $location)) -}}
-            {{/* special case index: trim _index/ from url */}}
-            {{- $.root.Scratch.Set "image" $location -}}
-          {{- end -}}
-    
-          {{/* Fragment specific resource */}}
-          {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-          {{- if (fileExists (printf "content/%s" $location)) -}}
-            {{/* special case index: trim _index/ from url */}}
-            {{- $.root.Scratch.Set "image" $location -}}
-          {{- end -}}
-          {{/* End of do not change */}}
           <li class="swiper-slide">
-            <div style="background-image:url({{ $.root.Scratch.Get "image" | relURL }})"
+            {{ $hero_image := resources.Get .image }}
+            <div style="background-image:url({{ $hero_image.Permalink }})"
               class="background-img">
               <div class="overlay">
                 <div class="hero-contact">
