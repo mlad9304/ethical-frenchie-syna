@@ -19,6 +19,7 @@ nav#static-navbar {
     @extend %items-center;
     @extend %no-decoration;
     margin: 0 10px;
+    color: $text;
     &.current {
       color: $main;
       svg {
@@ -34,6 +35,10 @@ nav#static-navbar {
       font-size: 10px;
     }
   }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $text;
 }
 
 @media screen and (min-width: 992px) {

@@ -7,6 +7,16 @@
   z-index: 100;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: $main;
+  border-color: $main;
+}
+
+.bg-primary {
+  background-color: $main!important;
+}
+
 .scroll-to-top {
   position: fixed;
   right: 32px;

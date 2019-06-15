@@ -10346,6 +10346,14 @@ body.modal-open {
   position: relative;
   z-index: 100; }
 
+.btn-primary {
+  color: #fff;
+  background-color: #900c3f;
+  border-color: #900c3f; }
+
+.bg-primary {
+  background-color: #900c3f !important; }
+
 .scroll-to-top {
   position: fixed;
   right: 32px;
@@ -10423,7 +10431,8 @@ nav#static-navbar {
   z-index: 200;
   display: flex; }
   nav#static-navbar a {
-    margin: 0 10px; }
+    margin: 0 10px;
+    color: #1f1f1f; }
     nav#static-navbar a.current {
       color: #900c3f; }
       nav#static-navbar a.current svg {
@@ -10434,6 +10443,9 @@ nav#static-navbar {
       width: 20px; }
     nav#static-navbar a span {
       font-size: 10px; }
+
+.navbar-light .navbar-nav .nav-link {
+  color: #1f1f1f; }
 
 @media screen and (min-width: 992px) {
   nav#static-navbar {
