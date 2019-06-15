@@ -47,7 +47,7 @@
             {{/* Handle special case of index.md being considered an item */}}
             {{- if not (in .Name "/index.md") -}}
               {{- $item := .Params }}
-              <div class="col-md-4 text-center">
+              <div class="col-lg-4 col-md-6 col-12 text-center">
                 {{- if $item.icon }}
                   <span class="fa-stack fa-3x m-2">
                     {{ $item_image := resources.Get $item.image | minify }}
