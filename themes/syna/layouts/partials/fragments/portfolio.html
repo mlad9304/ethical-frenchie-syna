@@ -47,7 +47,7 @@
               {{- if .Params.url }}
                 <a href="{{ .Params.url | relURL }}">
               {{- end }}
-                  <img src="{{ printf "images/%s" .Params.image | relURL }}" class="img-fluid" alt="{{ .Params.title }}">
+                  <img src="{{ printf "images/%s" .Params.image | relURL }}" class="img-fluid w-100" alt="{{ .Params.title }}">
                   <div class="position-absolute hover-overlay"></div>
                   {{- if or .Params.title .Params.subtitle }}
                     <div class="position-absolute description-container col">
