@@ -10370,6 +10370,12 @@ body.modal-open {
   visibility: hidden;
   opacity: 0; }
 
+@media screen and (max-width: 992px) {
+  #copyright {
+    margin-bottom: 70px; }
+  .scroll-to-top {
+    bottom: 75px; } }
+
 body main section.hero-slideshow div.swiper-container ul.swiper-wrapper li.swiper-slide div.background-img div.overlay div.hero-contact {
   position: absolute; }
 

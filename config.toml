@@ -1,4 +1,5 @@
 baseURL = "https://ethicalfrenchie.com/"
+copyright = "Ethical Frenchie LLC"
 languageCode = "en-us"
 languageLang = "en"
 title = "Ethical Frenchie"
@@ -6,9 +7,6 @@ themesDir = "themes"
 theme = "syna"
 
 [params]
-  OpenLinksInNewWindow = true
-  social = "ethicalfrenchie"
-  description = "Find the best french bulldogs for sale over the phone or in person. Vigorous qualification standards. Applications required. Call now (800) 205-7859."
   [params.style]
     background = "#fefefe"
 
@@ -18,29 +16,24 @@ theme = "syna"
 [[menu.main]]
   url = "#"
   name = "Home"
-  image = "nav/home.svg"
   weight = 10
 
 [[menu.main]]
   url = "/about-us"
   name = "About Us"
-  image = "nav/about-us.svg"
   weight = 15
 
 [[menu.main]]
   url = "/puppies"
   name = "Puppies"
-  image = "nav/puppies.svg"
   weight = 20
 
 [[menu.main]]
   url = "/blog"
   name = "Our Blog"
-  image = "nav/blog.svg"
   weight = 30
 
 [[menu.main]]
   url = "/contact-us"
   name = "Contact"
-  image = "nav/contact-us.svg"
   weight = 30

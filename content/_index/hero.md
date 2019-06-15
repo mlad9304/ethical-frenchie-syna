@@ -4,6 +4,7 @@ fragment = "hero"
 date = "2016-09-07"
 weight = 50
 background = "light" # can influence the text color
+social = "ethicalfrenchie"
 
 [[heroes]]
   image = "img/hero/hero-1.jpg"

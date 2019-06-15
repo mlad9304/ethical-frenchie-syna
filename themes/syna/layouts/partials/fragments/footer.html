@@ -1,29 +1,5 @@
 {{- $bg := .Params.background | default "dark" }}
 
-{{/* Global resource fallback - can also be used within loops */}}
-{{- $image := .Params.logo.image -}}
-
-{{/* Do not change the following snippet */}}
-{{/* Code is duplicated throughout the code */}}
-{{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-{{/* Page specific resource */}}
-{{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- $location := strings.TrimPrefix "_index/" $location -}}
-  {{- $.root.Scratch.Set "image" $location -}}
-{{- end -}}
-
-{{/* Fragment specific resource */}}
-{{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- $location := strings.TrimPrefix "_index/" $location -}}
-  {{- $.root.Scratch.Set "image" $location -}}
-{{- end -}}
-{{/* End of do not change */}}
-
 {{ "<!-- Footer -->" | safeHTML }}
 <div class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -37,21 +13,6 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{- with .Params.logo }}
-          <h4>
-            {{- .title -}}
-          </h4>
-          {{- if .image }}
-          <a href="{{ .url }}">
-            <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid w-50" alt="{{ .text }}">
-          </a>
-          {{- else }}
-          <div>
-            {{- .text -}}
-          </div>
-          {{- end -}}
-        {{- end -}}
-
         {{- if .Site.Menus.footer_social }}
           <div class="row justify-content-left ml-0">
             {{- range sort .Site.Menus.footer_social }}
@@ -68,39 +29,22 @@
             {{- end }}
           </div>
         {{- end }}
-      </div>
-      <div class="col-md m-2
-        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "secondary" -}}
-        {{- end -}}
-      ">
-        {{- with .Params.menu_title }}
-          <h4>
-            {{- . -}}
-          </h4>
-        {{- end -}}
-        {{- if .Site.Menus.footer }}
-          <ul class="nav flex-column">
-              {{- range sort .Site.Menus.footer }}
-                <li class="nav-item">
-                  <a class="nav-link p-0 display-5
-                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-%s" "secondary" -}}
-                    {{- end -}}
-                  " href="{{ .URL | relLangURL }}"
-                    {{- if hasPrefix .URL "#" }}
-                      class="anchor"
-                    {{- end -}}>
-                    {{- .Name -}}
-                  </a>
-                </li>
-              {{- end }}
-          </ul>
-        {{- end }}
+        <nav class="cta-social">
+          {{ with .Params.social }}
+            <a href="https://www.facebook.com/{{.}}" class="social-icon facebook" target="_blank" rel="noopener">
+              {{ $facebok := resources.Get "img/facebook.svg" | minify }}
+              <img src="{{ $facebok.Permalink }}" alt="Connect with us on Facebook">
+            </a>
+            <a href="https://www.instagram.com/{{.}}" class="social-icon instagram" target="_blank" rel="noopener">
+              {{ $instagram := resources.Get "img/instagram.svg" | minify }}
+              <img src="{{ $instagram.Permalink }}" alt="Connect with us on Instagram">
+            </a>
+          {{ end }}
+          <a href="tel:+18002057859" class="social-icon tel" target="_blank" rel="noopener">
+            {{ $phone := resources.Get "img/phone.svg" | minify }}
+            <img src="{{ $phone.Permalink }}" alt="Call us">
+          </a>
+        </nav>
       </div>
       <div class="col-md m-2
         {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
