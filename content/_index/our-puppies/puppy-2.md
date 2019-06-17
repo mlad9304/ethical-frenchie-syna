@@ -2,6 +2,5 @@
 weight = 20
 title = "Ego"
 image = "ego.jpg"
+subtitle = "My mom tells me I have the perfect structure and composition – I will grow up to be a perfect stud muffin. My blue eyes are just a bonus."
 +++
-
-Ante in nibh mauris cursus mattis molestie a iaculis. Nisi porta lorem mollis aliquam. Eu consequat ac felis donec et odio pellentesque diam volutpat. Arcu dui vivamus arcu felis. Senectus et netus et malesuada fames ac turpis egestas sed. Orci eu lobortis elementum nibh.
